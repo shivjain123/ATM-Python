@@ -1,41 +1,42 @@
 class ATM(object):
-    def __init__(self, accNo, balance=0):
-        self.accNo = accNo
-        self.balance = balance
-        accNo = int(input("Please enter your Account Number."))
-        #balance = 0
+    def __init__(self):
+        self.accNo = int(input("Please enter your Account Number."))
+        self.balance = 100000
+        self.amount = int(input("Please enter the Amount you want to deposit/withdraw."))
 
-    def deposit(self, amount, balance):
-        if(amount > 0):
-            balance = balance + amount
-            print("Your Deposit of " + amount + " was successful")
+    def deposit(self):
+        if(self.amount > 0):
+            self.balance = self.balance + self.amount
+            print("Your Deposit of " + str(self.amount) + " was successful")
         else:
-            print("Your Deposit of " + amount + " was unsuccessful; Deposit amount should be greater than 0")
+            print("Your Deposit of " + str(self.amount) +
+                  " was unsuccessful; Deposit amount should be greater than 0")
 
-    def withdrawl(self, amount, balance):
-        if(amount > 0):
-            if((balance - amount < 0)):
+    def withdrawl(self):
+        if(self.amount > 0):
+            if((self.balance - self.amount < 0)):
                 print("You have insufficient funds for this withdrawl")
             else:
-                balance = balance - amount
+                self.balance = self.balance - self.amount
                 print("Please take your cash from the dispenser")
         else:
             print("Withdrawl amount should be greater than 0")
 
-    def getBalance(self, balance):
-        print("The Balance in your account is " + balance)
+    def getBalance(self):
+        print("The Balance in your account is " + str(self.balance))
 
-    def getAccount(self, accNo):
-        print("Your Account No. is " + accNo)
+    def getAccount(self):
+        accNo = self.accNo
+        print("Your Account No. is " + str(accNo))
 
-banking = ATM(12345)
+banking = ATM()
 
 print()
-banking.withdrawl(60)
+banking.withdrawl()
 print()
-print(banking.deposit(100))
+banking.getBalance()
 print()
-banking.withdrawl(20)
+banking.deposit()
 print()
 banking.getBalance()
 print()
